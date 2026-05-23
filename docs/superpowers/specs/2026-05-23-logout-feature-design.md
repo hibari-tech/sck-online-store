@@ -40,7 +40,7 @@ POST /api/v1/logout
 ### Frontend (`store-web`)
 
 - Add `Logout()` to `src/services/auth.ts` using the same standalone `authAxiosInstance` (with `withCredentials: true`) that `Login` and `RefreshToken` already use. **Do not** route this call through the shared `utils/axios.ts` instance — its 401→refresh interceptor would otherwise race with the logout teardown.
-- Add a `clearUser()` action to `useUserStore` (persisted; `persist` middleware will wipe the localStorage slot automatically).
+- Use the existing `clearUser()` action on `useUserStore` (already defined; `persist` middleware wipes the localStorage slot automatically).
 - Add a `resetOrder()` action to `useOrderStore` (in-memory; Immer reset to initial state).
 - Replace the bare `UserCircleIcon` in `src/layouts/common/components/right-menu.tsx` with a Headless UI `Menu` dropdown containing one item: "Logout".
 
@@ -70,9 +70,9 @@ export const Logout = async (): Promise<LogoutResponse>
 - Returns `{ status }` from the response, or `{ status: 0 }` on network failure (best-effort).
 - Never throws — the caller always proceeds with local cleanup.
 
-### `hooks/use-user-store.ts` — add `clearUser`
+### `hooks/use-user-store.ts` — use existing `clearUser`
 
-Adds `clearUser: () => void` that sets `user` to `null`. The existing `persist` middleware writes the cleared state to localStorage automatically, so the `user` slot is wiped.
+`clearUser: () => void` is already defined; it sets `user` to `null` and the `persist` middleware writes the cleared state to localStorage. No code change required here.
 
 ### `hooks/use-order-store.ts` — add `resetOrder`
 
@@ -137,7 +137,6 @@ Local cleanup runs regardless of the network result. If the backend call fails (
 
 **Frontend**
 - `store-web/src/services/auth.ts` — add `Logout`
-- `store-web/src/hooks/use-user-store.ts` — add `clearUser`
 - `store-web/src/hooks/use-order-store.ts` — add `resetOrder`
 - `store-web/src/layouts/common/components/right-menu.tsx` — replace icon with Headless UI `Menu`
 - `store-web/src/__test__/` — component test for the dropdown + logout flow
