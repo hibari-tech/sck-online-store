@@ -210,10 +210,14 @@ func (api AuthAPI) LogoutHandler(context *gin.Context) {
 	ctx := context.Request.Context()
 	ip := context.ClientIP()
 
-	slog.InfoContext(ctx, "Logout",
+	slog.InfoContext(ctx, "User logged out",
 		"log_type", "audit",
+		"actor_id", 0,
+		"actor_type", "user",
 		"action", "logout",
-		"actor_ip", ip,
+		"resource_type", "session",
+		"resource_id", "",
+		"ip_address", ip,
 	)
 
 	context.SetCookie("refreshToken", "", -1, "/", "", false, true)
