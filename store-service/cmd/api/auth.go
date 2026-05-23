@@ -199,3 +199,27 @@ func (api AuthAPI) LoginHandler(context *gin.Context) {
 		"message":      "Logged in successfully.",
 	})
 }
+
+// LogoutHandler godoc
+// @Summary Logout
+// @Description Clears the refresh-token cookie. Idempotent — succeeds even if no cookie is present.
+// @Tags auth
+// @Success 204
+// @Router /logout [post]
+func (api AuthAPI) LogoutHandler(context *gin.Context) {
+	ctx := context.Request.Context()
+	ip := context.ClientIP()
+
+	slog.InfoContext(ctx, "User logged out",
+		"log_type", "audit",
+		"actor_id", 0,
+		"actor_type", "user",
+		"action", "logout",
+		"resource_type", "session",
+		"resource_id", "",
+		"ip_address", ip,
+	)
+
+	context.SetCookie("refreshToken", "", -1, "/", "", false, true)
+	context.Status(http.StatusNoContent)
+}

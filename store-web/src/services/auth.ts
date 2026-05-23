@@ -78,3 +78,17 @@ export const RefreshToken = async (): Promise<LoginResponse> => {
     }
   }
 }
+
+export type LogoutResponse = { status: number }
+
+export const Logout = async (): Promise<LogoutResponse> => {
+  try {
+    const response = await authAxiosInstance.post(`/api/v1/logout`)
+    return { status: response.status }
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      return { status: error.response.status }
+    }
+    return { status: 0 }
+  }
+}
