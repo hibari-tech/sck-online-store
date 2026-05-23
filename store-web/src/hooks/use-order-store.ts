@@ -79,55 +79,59 @@ type OrderStoreType = {
   setShippingMethod: (shippingMethod: number, shippingFee: number) => void
   setShippingInformation: (shippingInformation: ShippingInformationType) => void
   updateSummary: () => void
+  resetOrder: () => void
+}
+
+const initialOrderState = {
+  cart: [] as ProductDetailInCart[],
+  summary: {
+    total_price: 0,
+    total_price_thb: 0,
+    total_price_full_thb: 0,
+    receive_point: 0
+  },
+  totalProduct: 0,
+  totalPayment: 0,
+  receivePoint: 0,
+  shipping: {
+    shippingMethod: SHIPPING_METHOD[0].id,
+    shippingFee: SHIPPING_METHOD[0].price,
+    shippingInformation: {
+      firstName: '',
+      lastName: '',
+      address: '',
+      mobileNumber: '',
+      provinceId: 0,
+      districtId: 0,
+      subDistrictId: 0,
+      provinceName: '',
+      districtName: '',
+      subDistrictName: '',
+      zipCode: 0,
+      focused: ''
+    }
+  },
+  point: {
+    point: 0,
+    burnPoint: 0,
+    isUsePoint: false
+  },
+  payment: {
+    paymentMethod: 1,
+    paymentCreditInformation: {
+      number: '',
+      name: '',
+      expiry: '',
+      cvv: '',
+      issuer: '',
+      focused: ''
+    }
+  }
 }
 
 const useOrderStore = create<OrderStoreType>()(
   devtools((set, get) => ({
-    cart: [],
-    summary: {
-      total_price: 0,
-      total_price_thb: 0,
-      total_price_full_thb: 0,
-      receive_point: 0
-    },
-    totalProduct: 0,
-    // subTotal: 0,
-    totalPayment: 0,
-    receivePoint: 0,
-    shipping: {
-      shippingMethod: SHIPPING_METHOD[0].id,
-      shippingFee: SHIPPING_METHOD[0].price,
-      shippingInformation: {
-        firstName: '',
-        lastName: '',
-        address: '',
-        mobileNumber: '',
-        provinceId: 0,
-        districtId: 0,
-        subDistrictId: 0,
-        provinceName: '',
-        districtName: '',
-        subDistrictName: '',
-        zipCode: 0,
-        focused: ''
-      }
-    },
-    point: {
-      point: 0,
-      burnPoint: 0,
-      isUsePoint: false
-    },
-    payment: {
-      paymentMethod: 1,
-      paymentCreditInformation: {
-        number: '',
-        name: '',
-        expiry: '',
-        cvv: '',
-        issuer: '',
-        focused: ''
-      }
-    },
+    ...initialOrderState,
     getProductListInCart: async () => {
       // Mock userId
       const productInCart = await GetProductInCartService()
@@ -248,7 +252,8 @@ const useOrderStore = create<OrderStoreType>()(
           state.point.burnPoint = pointsUsed
         })
       )
-    }
+    },
+    resetOrder: () => set(initialOrderState)
   }))
 )
 
