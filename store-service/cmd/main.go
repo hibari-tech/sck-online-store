@@ -231,6 +231,7 @@ func main() {
 
 	v1.GET("/refreshToken", authAPI.RefreshTokenHandler)
 	v1.POST("/login", authAPI.LoginHandler)
+	v1.POST("/logout", authAPI.LogoutHandler)
 
 	// -------------------------------------------
 	// Protected /api/v1 endpoints
