@@ -1,0 +1,356 @@
+# Instincts generated from https://github.com/hibari-tech/sck-online-store
+# Generated: 2026-05-23T17:55:05.105Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: sck-online-store-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Commit Length
+
+## Action
+
+Write moderate-length commit messages (~61 characters)
+
+## Evidence
+
+- Average commit message length: 61 chars
+- Based on 10 commits
+
+---
+id: sck-online-store-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Naming Files
+
+## Action
+
+Use kebab-case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: kebab-case
+
+---
+id: sck-online-store-import-alias
+trigger: "when importing modules"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Import Alias
+
+## Action
+
+Use path aliases (@/, ~/) instead of relative imports
+
+## Evidence
+
+- Import analysis shows alias pattern
+- Example: import { x } from '@/lib/x'
+
+---
+id: sck-online-store-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Export Style
+
+## Action
+
+Prefer mixed exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: mixed
+
+---
+id: sck-online-store-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: 
+
+---
+id: sck-online-store-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/hibari-tech/sck-online-store
+---
+
+# Sck Online Store Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: sck-online-store-instinct-file-naming
+trigger: "When creating a new file in the repository"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct File Naming
+
+## Action
+
+Name the file using kebab-case (e.g., logout-handler.go)
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+
+---
+id: sck-online-store-instinct-function-naming
+trigger: "When defining a new function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Function Naming
+
+## Action
+
+Use camelCase for the function name
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+
+---
+id: sck-online-store-instinct-class-naming
+trigger: "When defining a new class or struct"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Class Naming
+
+## Action
+
+Use PascalCase for the class or struct name
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: sck-online-store-instinct-constant-naming
+trigger: "When declaring a constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for the constant name
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: sck-online-store-instinct-import-alias
+trigger: "When importing modules or packages"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Import Alias
+
+## Action
+
+Use alias import style
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+
+---
+id: sck-online-store-instinct-export-style
+trigger: "When exporting functions or classes"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Export Style
+
+## Action
+
+Use a mixed export style (both named and default exports as appropriate)
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: sck-online-store-instinct-error-handling
+trigger: "When handling errors in code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Error Handling
+
+## Action
+
+Use try-catch style for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style
+
+---
+id: sck-online-store-instinct-commit-prefix-added
+trigger: "When committing a new feature or file"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Commit Prefix Added
+
+## Action
+
+Prefix the commit message with [Added]
+
+## Evidence
+
+- Seen in commit '[Added] Logout feature design spec under docs/superpowers/specs'
+- Pattern in commits.prefixes
+
+---
+id: sck-online-store-instinct-commit-prefix-edited
+trigger: "When committing a change or update to existing code"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Commit Prefix Edited
+
+## Action
+
+Prefix the commit message with [Edited]
+
+## Evidence
+
+- Seen in commit '[Edited] Align logout audit log schema with existing handlers'
+- Pattern in commits.prefixes
+
+---
+id: sck-online-store-instinct-commit-message-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Commit Message Length
+
+## Action
+
+Keep the commit message concise, around 60 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+
+---
+id: sck-online-store-instinct-commit-format
+trigger: "When writing a commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Commit Format
+
+## Action
+
+Use the format: [Prefix] Short description of the change
+
+## Evidence
+
+- Pattern in commits.examples
+
+---
+id: sck-online-store-instinct-test-location
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: hibari-tech/sck-online-store
+---
+
+# Sck Online Store Instinct Test Location
+
+## Action
+
+Place tests in a separate folder from the source code
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation
+
